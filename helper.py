@@ -10,7 +10,6 @@ favourite_team = "Belarusian SU Air Penguins: Poliyevits, Sheftelevich, Sokol"
 upsolving_url = "http://karelia.snarknews.info/index.cgi?data=macros/doresh&head=index&menu=index&sbname=2014s&class=2014s"
 year = 2014
 
-
 class Problem:
 
     def __init__(self, title, code, ac):
