@@ -6,21 +6,19 @@ import sys
 import pickle
 import string
 
-favourite_team = "Belarusian SU Air Penguins: Poliyevits, Sheftelevich, Sokol"
-upsolving_url = "http://karelia.snarknews.info/index.cgi?data=macros/doresh&head=index&menu=index&sbname=2014s&class=2014s"
-year = 2014
+favourite_team = "Belarusian SU 1 Air Penguins: Poliyevits, Sheftelevich, Sokal"
+upsolving_url = "http://karelia.snarknews.info/index.cgi?data=macros/doresh&sbname=2016w&class=2016w"
+year = 2016
 
 class Problem:
 
     def __init__(self, title, code, ac):
         self.title = title
-        self.date = code[2:4] + '/' + code[:2] + '/' + str(year)
-        self.letter = code[-1]
+        self.letter = code[:2]
         self.ac = ac
 
     def __str__(self):
-        return 'Date: %s, Task %s - "%s", AC: %d' % (
-            self.date, self.letter, self.title, self.ac)
+        return 'Task %s - "%s", AC: %d' % (self.letter, self.title, self.ac)
 
 
 class Team:
@@ -117,7 +115,7 @@ if __name__ == "__main__":
                 print problem
         elif sys.argv[1] == '--pull':
             datafile = sys.argv[2]
-            soup = BeautifulSoup(urllib2.urlopen(upsolving_url))
+            soup = BeautifulSoup(urllib2.urlopen(upsolving_url), "html.parser")
             print >> sys.stderr, "The page has been downloaded!"
             standings = soup.find("table", class_="standings")
             teams = get_teams(standings)
